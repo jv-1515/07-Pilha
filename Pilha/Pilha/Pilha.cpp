@@ -1,3 +1,5 @@
+//João Victor Alves da Silva 
+
 #include <iostream>
 using namespace std;
 
@@ -74,7 +76,7 @@ void inicializar()
 }
 
 
-void push()
+void push() //Complemente a função PUSH para que ela inclua um elemento na pilha.
 {
 	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
@@ -87,13 +89,31 @@ void push()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
+	if (topo == NULL) {
+		topo = novo;
+		topo->prox = NULL;
+	}
 
+	else {
+		novo->prox = topo;
+		topo = novo;
+	}
 }
 
-void pop()
+void pop() //Implemente a função POP que deve exibir e remover o ultimo elemento da pilha ou exibir "Pilha Vazia" se não houver nenhum elemento.
 {
+	//excluir
+	if (topo == NULL) {
+		cout << "Nao eh possivel excluir";
+	}
 
-	
-
+	else {
+		NO* aux = topo;
+		aux->prox = aux;
+		cout << "Valor excluido: " << aux->valor;
+		free(topo);
+		topo = aux;
+	}
 }
+
 
